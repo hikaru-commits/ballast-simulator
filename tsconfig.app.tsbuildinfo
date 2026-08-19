@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/components/BottomPanel.tsx","./src/components/PidDiagram.tsx","./src/components/Pump.tsx","./src/components/ShipAttitude.tsx","./src/components/SidePanel.tsx","./src/components/Tank.tsx","./src/components/Valve.tsx","./src/simulation/types.ts","./src/store/useSimStore.ts"],"errors":true,"version":"5.8.3"}
