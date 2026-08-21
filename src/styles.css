@@ -47,3 +47,19 @@ html,body,#root{height:100%;overflow:hidden}.compact-app{height:100vh;min-height
  .embedded-log-slot{min-height:180px;overflow:visible}
  .embedded-log-slot .bottom{height:180px}
 }
+/* v1.9 scenario training + eductor */
+.scenario-side{padding:6px 6px 6px 0;display:flex;flex-direction:column;gap:6px;overflow-y:auto;min-height:0}.scenario-side>.compact-side{padding:0;overflow:visible}.mission-card{border-color:#4d7188;background:#0b1823}.level-pill{font-size:8px;padding:2px 5px;border:1px solid #8b6d2a;color:#ffd66c;border-radius:999px}.mission-title{display:block;font-size:10px;color:#f0f6fa;margin:3px 0 6px}.mission-targets{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px}.mission-targets span{font-size:7.5px;color:#7892a5;background:#07131d;border:1px solid #1d3445;border-radius:3px;padding:4px}.mission-targets b{display:block;color:#e8f4fa;font-size:9px;margin-top:1px}.mission-step{margin-top:6px;padding:6px;background:#102333;border-left:3px solid #64c7e6}.mission-step small{display:block;color:#78a2b7;font-size:7px}.mission-step b{display:block;font-size:10px;margin-top:2px}.mission-actions{display:flex;gap:4px;margin-top:5px}.mission-actions button{font-size:8px;padding:4px 6px}.hint-box{font-size:8px;line-height:1.4;color:#d9e9f2;background:#0a141c;border:1px solid #304b5d;padding:5px;margin-top:5px}.mission-progress{display:flex;gap:3px;margin-top:6px}.mission-progress i{height:3px;flex:1;background:#243542;border-radius:2px}.mission-progress i.done{background:#45c783}.mission-progress i.current{background:#f0c85f}.eductor-card{border-color:#4c5063}.eductor-active{border-color:#46c98b}.vacuum-ok{color:#63dda0!important}.vacuum-no{color:#f1c966!important}.eductor-symbol{fill:#172832;stroke:#dbe8ee;stroke-width:2}
+@media(max-width:1180px){.scenario-side{padding:6px;overflow:visible}.scenario-side>.compact-side{display:grid}.mission-card{margin-bottom:4px}}
+.stripping-route .pipe-base{stroke:#6f7f8f;stroke-width:4}
+
+/* v1.11 — dedicated stripping topology */
+.stripping-route .pipe-base{stroke:#456d5e;stroke-width:5}
+.stripping-route .pipe-water-fill{stroke:#59d39b}
+.stripping-route .pipe-flow{stroke:#8bf0bd}
+.stripping-header-label{fill:#73e6aa;font-size:11px;font-weight:700;letter-spacing:.45px}
+.eductor-symbol{fill:#14222c;stroke:#d8e7ef;stroke-width:2}
+.eductor-suction-neck{stroke:#d8e7ef;stroke-width:2}
+.motive-label{fill:#70bfff;font-size:9px;font-weight:700}
+.strip-label{fill:#73e6aa;font-size:9px;font-weight:700}
+/* v1.13 mode / mission ladder / cargo operation */
+.mode-card{border-color:#36566b}.mission-desc{display:block;color:#91a8b8;font-size:8px;margin:-2px 0 5px}.mission-complete{border-color:#42c982;box-shadow:inset 0 0 0 1px rgba(66,201,130,.18)}.mission-success{margin-top:6px;padding:6px;text-align:center;border:1px solid #3ecb83;background:#0d3124;color:#77e4aa;font-size:10px;font-weight:900;letter-spacing:.08em}.skip-btn{border-color:#755f32!important;color:#f0ce77!important}.level-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:6px}.level-strip button{font-size:8px;padding:4px 0}.level-strip button.current{border-color:#67d4f1;background:#163d4d}.level-strip button.done{box-shadow:inset 0 -2px #43cc84}.level-strip button.skipped{box-shadow:inset 0 -2px #d3a64b}.cargo-progress{height:8px;background:#172633;border-radius:8px;overflow:hidden;margin:5px 0 7px}.cargo-progress i{display:block;height:100%;background:#5ac8e8;transition:width .2s}.cargo-ok{border-color:#3bbd7b!important;color:#6ee2a5!important}.cargo-warn{border-color:#d09d45!important;color:#ffd37b!important}.cargo-card .hint-box{border-color:#315268}

@@ -4,6 +4,7 @@ import { PidDiagram } from './components/PidDiagram'
 import { SidePanel } from './components/SidePanel'
 import { BottomPanel } from './components/BottomPanel'
 import { ShipAttitude } from './components/ShipAttitude'
+import { ScenarioPanel } from './components/ScenarioPanel'
 
 export default function App(){
  const tick=useSimStore(s=>s.tick)
@@ -28,7 +29,7 @@ export default function App(){
   <header className="compact-header">
    <div className="brand"><b>BALLAST OPERATION SIMULATOR</b><span>Training Vessel</span></div>
    <div className="toolbar">
-    <button className={s.training?'active':''} onClick={()=>s.setTraining(!s.training)}>{s.training?'TRAINING':'OPERATION'}</button>
+    {(['FREE','MISSION','CARGO'] as const).map(m=><button key={m} className={s.mode===m?'active':''} onClick={()=>s.setMode(m)}>{m}</button>)}
     {[1,2,5].map(x=><button key={x} className={s.speed===x?'active':''} onClick={()=>s.setSpeed(x)}>×{x}</button>)}
     <button className={s.paused?'danger':''} onClick={()=>s.setPaused(!s.paused)}>{s.paused?'RESUME':'PAUSE'}</button>
     <button onClick={()=>setAttitudeHidden(v=>!v)}>{attitudeHidden?'SHOW ATTITUDE':'HIDE ATTITUDE'}</button>
@@ -43,7 +44,7 @@ export default function App(){
     {!attitudeHidden&&<div className="attitude-slot"><ShipAttitude/></div>}
     {!attitudeHidden&&<div className="embedded-log-slot"><BottomPanel/></div>}
    </section>
-   {!sideHidden&&<SidePanel/>}
+   {!sideHidden&&<aside className="scenario-side"><ScenarioPanel/><SidePanel/></aside>}
   </div>
 
  </div>

@@ -1,5 +1,5 @@
 import { useSimStore } from '../store/useSimStore'
-export function Pump({id,x,y}:{id:'BP1'|'BP2'|'BP3';x:number;y:number}){
+export function Pump({id,x,y}:{id:'BP1'|'BP2'|'BP3'|'GS1';x:number;y:number}){
  const p=useSimStore(s=>s.pumps[id]); const sel=useSimStore(s=>s.setSelectedPump)
  const pct=p.ratedRpm?Math.round(p.rpm/p.ratedRpm*100):0
  return <g transform={`translate(${x} ${y})`} onClick={(e)=>{e.stopPropagation();sel(id)}} className="pump-symbol">

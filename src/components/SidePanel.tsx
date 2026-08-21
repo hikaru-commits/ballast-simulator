@@ -9,6 +9,8 @@ export function SidePanel(){
  const gravityEntries=Object.entries(s.gravityFlow).filter(([,q])=>Math.abs(q)>1)
  const ballastVolume=Object.values(s.tanks).reduce((sum,t)=>sum+t.volume,0)
  const ballastMass=ballastVolume*1.025
+ const selectedMainLevels=['P1','P2','P3','P4','S1','S2','S3','S4'].filter(id=>s.valves[`V-${id}-T`]?.opening>8).map(id=>{const t=s.tanks[id];return t.tankHeight*t.volume/t.capacity})
+ const lowestSelectedMainLevel=selectedMainLevels.length?Math.min(...selectedMainLevels):null
  const gmClass=c.stabilityStatus==='NORMAL'?'gm-normal':c.stabilityStatus==='CAUTION'?'gm-caution':'gm-danger'
 
  return <aside className="side compact-side">
@@ -38,6 +40,19 @@ export function SidePanel(){
    <div className="card-title-row"><h3>STABILITY</h3><b>{c.effectiveGM.toFixed(2)} m GM</b></div>
    <div className="gm-bar"><i style={{width:`${Math.max(0,Math.min(100,c.effectiveGM/c.baseGM*100))}%`}}/></div>
    <div className="mini-bars"><span>FSC <b>-{c.freeSurfaceCorrection.toFixed(2)} m</b></span><span>SLACK <b>{c.slackTankCount}</b></span></div>
+  </div>
+
+
+  <div className="card compact-card">
+   <div className="card-title-row"><h3>DEBALLAST LIMIT</h3><b>{lowestSelectedMainLevel===null?'—':lowestSelectedMainLevel.toFixed(2)+' m'}</b></div>
+   <div className="mini-bars"><span>MAIN SUCTION</span><b>{lowestSelectedMainLevel===null?'NO TANK':lowestSelectedMainLevel<=1.0?'LIMIT REACHED':lowestSelectedMainLevel<2.0?'TAPERING':'NORMAL'}</b></div>
+   <small>Main pump: fast, effective above ~1.0 m. Eductor stripping: slower, available down to near-empty.</small>
+  </div>
+
+  <div className={`card compact-card eductor-card ${s.eductor.active?'eductor-active':''}`}>
+   <div className="card-title-row"><h3>EDUCTOR No.1</h3><b>{s.eductor.active?'SUCTION':'STANDBY'}</b></div>
+   <div className="mini-bars"><span>MOTIVE <b>{s.eductor.motiveFlow.toFixed(0)} m³/h</b></span><span>SUCT <b>{s.eductor.suctionFlow.toFixed(0)} m³/h</b></span></div>
+   <div className="mini-bars"><span>SUCTION P.</span><b className={s.eductor.suctionPressure<0?'vacuum-ok':'vacuum-no'}>{s.eductor.suctionPressure.toFixed(3)} MPa</b></div>
   </div>
 
   {v&&<div className="card compact-card control-card">
